@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kemet Travel — Welcome to Egypt</title>
+    <meta
+      name="description"
+      content="Discover Egypt's curated Nile suites, Giza heritage villas, Siwa eco-lodges, and Red Sea retreats with transparent EGP rates and personal concierge booking confirmation."
+    />
+    <meta property="og:title" content="Kemet Travel — Welcome to Egypt" />
+    <meta
+      property="og:description"
+      content="Curated Egyptian stays across Cairo, Giza, Luxor, Aswan, Siwa Oasis, El Gouna, and Dahab."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Urbanist:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Kemet Travel",
+        "description": "Curated Egyptian sanctuaries across Zamalek, Giza Plateau, Luxor, Aswan, Siwa Oasis, El Gouna, and Dahab.",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Egypt"
+        },
+        "priceRange": "EGP 3,800 - EGP 18,500"
+      }
+    </script>
+    <script>
+      // Restore nested GitHub Pages paths forwarded by public/404.html
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+:root {
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ink: #1d1a1c;
+  --muted: #5c5156;
+  --light-muted: #8a7f83;
+  --peach: #f7d9c6;
+  --peach-mid: #fbe7da;
+  --peach-end: #fdf0e7;
+  --accent-orange: #f39419;
+  --star-yellow: #f7c325;
+  --heart-red: #ff4d5e;
+}
+
+html {
+  background-color: #f7d9c6;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    #f7d9c6 0%,
+    #f7d9c6 115vh,
+    #fbe7da 175vh,
+    #fdf0e7 100%
+  );
+  min-height: 100vh;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display-serif {
+  font-family: 'Gilda Display', Georgia, serif;
+}
+
+.font-urbanist {
+  font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Custom cursor hiding for fine pointers */
+@media (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
+
+/* Hero Giant Gradient Text */
+.hero-giant-word {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(255, 255, 255, 0.86) 36%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Word intro rise animation */
+@keyframes wordRiseIn {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.animate-word-rise {
+  animation: wordRiseIn 1.15s var(--out) both;
+}
+
+/* Thumbnail scale-in intro */
+@keyframes thumbScaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Pure GPU-composited Ken Burns zoom (zero React re-renders) */
+@keyframes heroKenBurns {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.hero-ken-burns {
+  animation: heroKenBurns 12s ease-out forwards;
+}
+
+/* Search bar intro */
+@keyframes searchIntroUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.animate-search-intro {
+  animation: searchIntroUp 1s var(--out) 0.25s both;
+}
+
+/* Cloud drifting animations */
+@keyframes cloudDriftFront {
+  0% {
+    transform: translate3d(-2.5%, 0, 0);
+  }
+  100% {
+    transform: translate3d(2.5%, 0, 0);
+  }
+}
+
+@keyframes cloudDriftBack {
+  0% {
+    transform: scaleX(-1) translate3d(-3%, -2%, 0);
+  }
+  100% {
+    transform: scaleX(-1) translate3d(3%, 2%, 0);
+  }
+}
+
+.cloud-drift-front {
+  animation: cloudDriftFront 26s ease-in-out infinite alternate;
+}
+
+.cloud-drift-back {
+  animation: cloudDriftBack 34s ease-in-out infinite alternate;
+}
+
+/* Nav link left-to-right wipe underline */
+.nav-wipe-link {
+  position: relative;
+}
+
+.nav-wipe-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s var(--ease);
+}
+
+.nav-wipe-link:hover::after,
+.nav-wipe-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Popover drop-in */
+@keyframes popoverDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-popover-drop {
+  animation: popoverDropIn 0.28s var(--out) both;
+}
+
+/* Heart pop */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.36s var(--out);
+}
+
+/* Detail block stagger entrance */
+@keyframes detailRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-detail-rise {
+  animation: detailRiseIn 0.65s var(--out) both;
+}
+
+/* Skeleton shimmer */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(234, 208, 190, 0.72) 25%,
+    rgba(253, 240, 231, 0.92) 50%,
+    rgba(234, 208, 190, 0.72) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.45s ease-in-out infinite;
+}
+
+/* Reduced motion safeguard */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Krung Travel — Welcome to Bangkok",
+  "description": "Cinematic Bangkok travel booking experience featuring warm sunset peach aesthetics, misty slide transitions, and curated riverside stays.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

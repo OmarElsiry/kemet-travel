@@ -1,0 +1,230 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net deny-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isAdmin() {
+      return isVerifiedUser() && (
+        request.auth.token.email == 'omaromar01067@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll([
+          'uid', 'email', 'displayName', 'phone', 'preferredCurrency', 'role', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'email', 'displayName', 'phone', 'preferredCurrency', 'role', 'createdAt', 'updatedAt'
+        ])
+        && data.uid is string && data.uid == userId && isValidId(data.uid)
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 160
+        && data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 100
+        && data.phone is string && data.phone.size() <= 32
+        && data.preferredCurrency is string && data.preferredCurrency in ['EGP', 'USD']
+        && data.role is string && data.role in ['customer', 'sales']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidPropertyOverride(data, propertyId) {
+      return data.keys().hasAll(['id', 'priceEgp', 'available', 'maxGuests', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'priceEgp', 'available', 'maxGuests', 'updatedAt'])
+        && data.id is string && data.id == propertyId && data.id.size() <= 64 && data.id.matches('^[a-z0-9\\-]+$')
+        && data.priceEgp is number && data.priceEgp >= 500 && data.priceEgp <= 500000
+        && data.available is bool
+        && data.maxGuests is number && data.maxGuests >= 1 && data.maxGuests <= 20
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidBooking(data, bookingId) {
+      return data.keys().hasAll([
+          'id', 'reference', 'userId', 'customerName', 'customerEmail', 'customerPhone',
+          'customerNotes', 'stayId', 'stayName', 'area', 'photoUrl', 'checkInIso', 'checkOutIso',
+          'nights', 'guests', 'nightlyRateEgp', 'totalEgp', 'status', 'salesNotes',
+          'confirmationDetails', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'reference', 'userId', 'customerName', 'customerEmail', 'customerPhone',
+          'customerNotes', 'stayId', 'stayName', 'area', 'photoUrl', 'checkInIso', 'checkOutIso',
+          'nights', 'guests', 'nightlyRateEgp', 'totalEgp', 'status', 'salesNotes',
+          'confirmationDetails', 'createdAt', 'updatedAt'
+        ])
+        && data.id is string && data.id == bookingId && isValidId(data.id)
+        && data.reference is string && data.reference.size() >= 6 && data.reference.size() <= 32 && data.reference.matches('^[A-Z0-9\\-]+$')
+        && data.userId is string && isValidId(data.userId)
+        && data.customerName is string && data.customerName.size() >= 2 && data.customerName.size() <= 100
+        && data.customerEmail is string && data.customerEmail.size() >= 3 && data.customerEmail.size() <= 160
+        && data.customerPhone is string && data.customerPhone.size() >= 6 && data.customerPhone.size() <= 32
+        && data.customerNotes is string && data.customerNotes.size() <= 600
+        && data.stayId is string && data.stayId.size() >= 2 && data.stayId.size() <= 64 && data.stayId.matches('^[a-z0-9\\-]+$')
+        && data.stayName is string && data.stayName.size() >= 2 && data.stayName.size() <= 120
+        && data.area is string && data.area.size() >= 2 && data.area.size() <= 120
+        && data.photoUrl is string && data.photoUrl.size() >= 1 && data.photoUrl.size() <= 300
+        && data.checkInIso is string && data.checkInIso.size() >= 10 && data.checkInIso.size() <= 40
+        && data.checkOutIso is string && data.checkOutIso.size() >= 10 && data.checkOutIso.size() <= 40
+        && data.nights is number && data.nights >= 1 && data.nights <= 90
+        && data.guests is number && data.guests >= 1 && data.guests <= 20
+        && data.nightlyRateEgp is number && data.nightlyRateEgp >= 500 && data.nightlyRateEgp <= 500000
+        && data.totalEgp is number && data.totalEgp >= 500 && data.totalEgp <= 50000000
+        && data.status is string && data.status in ['pending_confirmation', 'contacted', 'confirmed', 'rejected', 'cancelled']
+        && data.salesNotes is string && data.salesNotes.size() <= 1000
+        && data.confirmationDetails is string && data.confirmationDetails.size() <= 1000
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidReview(data, reviewId) {
+      return data.keys().hasAll(['id', 'stayId', 'userId', 'authorName', 'rating', 'comment', 'createdAt'])
+        && data.keys().hasOnly(['id', 'stayId', 'userId', 'authorName', 'rating', 'comment', 'createdAt'])
+        && data.id is string && data.id == reviewId && isValidId(data.id)
+        && data.stayId is string && data.stayId.size() >= 2 && data.stayId.size() <= 64 && data.stayId.matches('^[a-z0-9\\-]+$')
+        && data.userId is string && isValidId(data.userId)
+        && data.authorName is string && data.authorName.size() >= 1 && data.authorName.size() <= 80
+        && data.rating is number && data.rating >= 1 && data.rating <= 5
+        && data.comment is string && data.comment.size() >= 2 && data.comment.size() <= 600
+        && data.createdAt is timestamp;
+    }
+
+    function isValidInquiry(data, inquiryId) {
+      return data.keys().hasAll(['id', 'type', 'name', 'email', 'phone', 'district', 'message', 'status', 'createdAt'])
+        && data.keys().hasOnly(['id', 'type', 'name', 'email', 'phone', 'district', 'message', 'status', 'createdAt'])
+        && data.id is string && data.id == inquiryId && isValidId(data.id)
+        && data.type is string && data.type in ['host', 'contact']
+        && data.name is string && data.name.size() >= 2 && data.name.size() <= 100
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 160
+        && data.phone is string && data.phone.size() <= 32
+        && data.district is string && data.district.size() <= 100
+        && data.message is string && data.message.size() >= 5 && data.message.size() <= 1200
+        && data.status is string && data.status in ['new', 'reviewed', 'archived']
+        && data.createdAt is timestamp;
+    }
+
+    match /users/{userId} {
+      allow get: if isSignedIn() && isValidId(userId) && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(userId)
+        && request.auth.uid == userId
+        && isValidUserProfile(incoming(), userId)
+        && incoming().role == 'customer'
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser()
+        && isValidId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isAdmin() ||
+          (
+            request.auth.uid == userId
+            && incoming().role == existing().role
+            && incoming().email == existing().email
+            && incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'phone', 'preferredCurrency', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    match /admins/{userId} {
+      allow get: if isVerifiedUser() && isValidId(userId) && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin() && isValidId(userId);
+    }
+
+    match /properties/{propertyId} {
+      allow get, list: if true;
+      allow create, update: if isAdmin()
+        && propertyId.size() <= 64
+        && propertyId.matches('^[a-z0-9\\-]+$')
+        && isValidPropertyOverride(incoming(), propertyId)
+        && incoming().updatedAt == request.time;
+      allow delete: if isAdmin() && propertyId.size() <= 64;
+    }
+
+    match /bookings/{bookingId} {
+      allow get: if isSignedIn() && isValidId(bookingId) && (existing().userId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidBooking(incoming(), bookingId)
+        && incoming().userId == request.auth.uid
+        && incoming().status == 'pending_confirmation'
+        && incoming().salesNotes == ''
+        && incoming().confirmationDetails == ''
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidBooking(incoming(), bookingId)
+        && incoming().id == existing().id
+        && incoming().reference == existing().reference
+        && incoming().userId == existing().userId
+        && incoming().stayId == existing().stayId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isAdmin() ||
+          (
+            existing().userId == request.auth.uid
+            && existing().status in ['pending_confirmation', 'contacted']
+            && incoming().status == 'cancelled'
+            && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(bookingId);
+    }
+
+    match /reviews/{reviewId} {
+      allow get, list: if true;
+      allow create: if isVerifiedUser()
+        && isValidId(reviewId)
+        && isValidReview(incoming(), reviewId)
+        && incoming().userId == request.auth.uid
+        && incoming().createdAt == request.time;
+      allow update: if isAdmin() && isValidId(reviewId) && isValidReview(incoming(), reviewId);
+      allow delete: if isValidId(reviewId) && (isAdmin() || (isVerifiedUser() && existing().userId == request.auth.uid));
+    }
+
+    match /inquiries/{inquiryId} {
+      allow get, list: if isAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(inquiryId)
+        && isValidInquiry(incoming(), inquiryId)
+        && incoming().status == 'new'
+        && incoming().createdAt == request.time;
+      allow update: if isAdmin()
+        && isValidId(inquiryId)
+        && isValidInquiry(incoming(), inquiryId)
+        && incoming().createdAt == existing().createdAt
+        && incoming().diff(existing()).affectedKeys().hasOnly(['status']);
+      allow delete: if isAdmin() && isValidId(inquiryId);
+    }
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated customer or sales staff profile stored by Firebase Auth UID.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 160
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "preferredCurrency": {
+          "type": "string",
+          "enum": ["EGP", "USD"]
+        },
+        "role": {
+          "type": "string",
+          "enum": ["customer", "sales"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "email", "displayName", "phone", "preferredCurrency", "role", "createdAt", "updatedAt"]
+    },
+    "PropertyOverride": {
+      "title": "PropertyOverride",
+      "description": "Sales-managed pricing, availability, and capacity overrides for Egyptian stays.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "priceEgp": {
+          "type": "number"
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "maxGuests": {
+          "type": "number"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "priceEgp", "available", "maxGuests", "updatedAt"]
+    },
+    "BookingRequest": {
+      "title": "BookingRequest",
+      "description": "Customer booking request recorded as pending_confirmation until reviewed and confirmed by sales.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 32,
+          "pattern": "^[A-Z0-9\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "customerName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "customerEmail": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 160
+        },
+        "customerPhone": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 32
+        },
+        "customerNotes": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "stayId": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "stayName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "area": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "photoUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "checkInIso": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "checkOutIso": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "nights": {
+          "type": "number"
+        },
+        "guests": {
+          "type": "number"
+        },
+        "nightlyRateEgp": {
+          "type": "number"
+        },
+        "totalEgp": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending_confirmation", "contacted", "confirmed", "rejected", "cancelled"]
+        },
+        "salesNotes": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "confirmationDetails": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "reference",
+        "userId",
+        "customerName",
+        "customerEmail",
+        "customerPhone",
+        "customerNotes",
+        "stayId",
+        "stayName",
+        "area",
+        "photoUrl",
+        "checkInIso",
+        "checkOutIso",
+        "nights",
+        "guests",
+        "nightlyRateEgp",
+        "totalEgp",
+        "status",
+        "salesNotes",
+        "confirmationDetails",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "StayReview": {
+      "title": "StayReview",
+      "description": "Verified guest review for an Egyptian stay property.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "stayId": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "authorName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "rating": {
+          "type": "number"
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 600
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "stayId", "userId", "authorName", "rating", "comment", "createdAt"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Host partnership or concierge contact inquiry.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["host", "contact"]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 160
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "district": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 1200
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "reviewed", "archived"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "type", "name", "email", "phone", "district", "message", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private customer profiles (PII-isolated to owner and sales admins)."
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Authorized sales/admin staff records."
+    },
+    "/properties/{propertyId}": {
+      "schema": { "$ref": "#/entities/PropertyOverride" },
+      "description": "Publicly readable stay pricing and availability overrides managed by sales admins."
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/BookingRequest" },
+      "description": "Customer booking requests and sales confirmation workflow records."
+    },
+    "/reviews/{reviewId}": {
+      "schema": { "$ref": "#/entities/StayReview" },
+      "description": "Customer reviews per stay property."
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Concierge and host partnership inquiries."
+    }
+  }
+}

@@ -1,0 +1,990 @@
+# Full Website Audit, Egypt Localization, Functional Testing, Production Upgrade & GitHub Pages Deployment
+
+## 1. Your Mission
+
+Act as a senior full-stack engineer, QA automation engineer, UI/UX specialist, performance engineer, and deployment engineer.
+
+Your task is to thoroughly inspect, improve, complete, test, and deploy the existing website.
+
+This is an execution task, not merely a code review or a planning exercise.
+
+You must work directly with the existing project and carry the task through implementation, testing, deployment, and post-deployment verification.
+
+**Do not stop after producing an audit, plan, recommendations, or checklist. Execute the work.**
+
+The final website must retain the existing design language while becoming fully localized for Egypt, functionally reliable, responsive across devices, and ready for real-world use.
+
+---
+
+## 2. Non-Negotiable Rules
+
+1. **Preserve the existing design system.** Reuse the design components, visual patterns, typography, spacing, animations, interactions, and layout conventions already established in the project. Do not redesign the website from scratch or introduce an unrelated visual identity.
+
+2. **Do not make unsupported assumptions.** Inspect the repository, existing implementation, configuration, assets, and available information before making decisions.
+
+3. **Do not fabricate information.** Never invent business details, contact numbers, locations, prices, ratings, reviews, images, booking availability, or functionality.
+
+4. **Do not leave unfinished functionality.** Every visible interactive element must have a meaningful, working behavior or be removed if it is genuinely unnecessary.
+
+5. **Do not stop at the first successful test.** Continue testing all relevant pages, controls, responsive layouts, and user journeys.
+
+6. **Do not claim success without evidence.** Every completed feature and test must be supported by actual execution and verification.
+
+7. **Do not replace existing functionality unnecessarily.** Preserve working behavior and avoid breaking existing features.
+
+8. **Do not introduce unnecessary dependencies, frameworks, or architectural complexity.** Follow the project's existing technology stack unless a documented technical limitation requires a change.
+
+9. **Do not use AI-generated images, artificial-looking stock imagery, or fabricated visual content.**
+
+10. **Do not finish with recommendations only.** Implement every feasible improvement and clearly document anything that genuinely requires external credentials, services, or user-provided information.
+
+---
+
+# PHASE 1 — COMPLETE PROJECT INSPECTION
+
+Before modifying anything, inspect the entire project.
+
+### 1.1 Repository inspection
+
+Examine:
+
+- Project structure and all source files.
+- All pages, routes, and navigation components.
+- Shared components and reusable UI elements.
+- Existing design tokens, styles, fonts, and themes.
+- JavaScript/TypeScript functionality.
+- Forms, validation, buttons, links, dropdowns, tabs, menus, modals, popups, and other interactions.
+- API integrations and existing backend functionality.
+- Existing authentication and booking functionality.
+- Image assets, external media, and asset references.
+- Responsive CSS and breakpoints.
+- Build configuration and deployment configuration.
+- Existing errors, warnings, and performance problems.
+
+Do not inspect only the homepage. Explore the complete website.
+
+### 1.2 Establish the existing design baseline
+
+Document the existing design patterns before changing anything.
+
+Identify which components and styles must be reused.
+
+All new pages and functionality must feel native to the existing website.
+
+Do not introduce:
+- An unrelated color palette.
+- A different typography system.
+- Generic AI-generated layouts.
+- Unnecessary cards or decorative elements.
+- Inconsistent buttons or interaction patterns.
+- Design changes that are not supported by the existing visual language.
+
+### 1.3 Create a complete functionality inventory
+
+Create an inventory of every:
+
+- Page and route.
+- Navigation link.
+- Button.
+- Clickable card or item.
+- Dropdown.
+- Popup and modal.
+- Form and input.
+- Tab and accordion.
+- Carousel and slider.
+- Filter and search control.
+- Pagination control.
+- Booking action.
+- Login and registration action.
+- External link.
+- Responsive navigation control.
+
+Record the expected behavior of each element.
+
+Use this inventory as the master testing checklist throughout the entire task.
+
+---
+
+# PHASE 2 — COMPLETE EGYPT LOCALIZATION
+
+The website currently presents Bangkok as its location. Replace this localization with Egypt consistently throughout the entire website.
+
+This is not just a text replacement.
+
+Inspect all content and location-dependent functionality, including:
+
+- Page titles and descriptions.
+- Locations and destinations.
+- Addresses and geographical information.
+- Maps, pins, and coordinates.
+- Navigation labels.
+- Search and filter options.
+- Item descriptions.
+- Booking details.
+- Contact information.
+- Currency and pricing.
+- SEO metadata.
+- Image captions and alternative text.
+- Structured data and configuration files.
+
+Remove outdated Bangkok-specific information wherever it is no longer relevant.
+
+### 2.1 Use real Egyptian locations
+
+Use genuine Egyptian destinations, places, and locations relevant to the website's existing purpose.
+
+Verify that every displayed location actually exists and that its description accurately represents it.
+
+Do not use random Egyptian names or imaginary destinations.
+
+### 2.2 Replace every image with genuine Egyptian photography
+
+This is a mandatory requirement.
+
+Replace all Bangkok-related images and any unsuitable existing imagery with real, visually attractive photographs taken in Egypt.
+
+Image requirements:
+
+- Must depict actual Egyptian places, landscapes, architecture, activities, or relevant subjects.
+- Must come from genuine photographic sources.
+- Must not be AI-generated.
+- Must not be artificial-looking or heavily manipulated.
+- Must not depict another country while being presented as Egypt.
+- Must be visually high quality and appropriate for the particular page or item.
+- Must not repeatedly reuse the same image across different items.
+- Must be optimized for fast loading without unnecessary quality loss.
+
+Use trustworthy sources such as:
+- Wikimedia Commons.
+- Unsplash.
+- Pexels.
+- Official Egyptian tourism sources.
+- Other verifiable photographic sources with appropriate usage rights.
+
+For every image, verify its source and relevance.
+
+Preserve attribution and licensing information wherever required.
+
+Maintain a clear mapping between each image, its source, and the website item using it.
+
+**Never generate replacement images with an AI image generator. Use actual photographs.**
+
+---
+
+# PHASE 3 — REALISTIC AND DISTINCT CONTENT AND PRICING
+
+Review all displayed items, services, packages, destinations, or products.
+
+Every item must have its own genuinely differentiated information.
+
+Do not populate the website using repeated template data.
+
+### 3.1 Data differentiation
+
+Ensure that items do not unnecessarily share:
+
+- The same titles.
+- The same descriptions.
+- The same prices.
+- The same ratings.
+- The same durations.
+- The same locations.
+- The same specifications.
+- The same features.
+- The same images.
+- The same availability information.
+
+Each item should have its own coherent and realistic data.
+
+Differences must be meaningful, not merely random changes to numbers or wording.
+
+### 3.2 Egyptian pricing
+
+All prices must be appropriate for the Egyptian market.
+
+Requirements:
+
+- Use EGP as the displayed currency.
+- Research relevant Egyptian market prices before setting prices.
+- Compare genuinely comparable services or products.
+- Avoid copying international prices without localization.
+- Avoid unrealistic discounts or suspiciously low prices.
+- Ensure that prices are consistent across item listings, details pages, booking summaries, and checkout-related screens.
+- Do not display contradictory prices in different sections.
+
+Keep pricing data centralized so that it can be maintained consistently.
+
+When a reliable price cannot be verified, clearly identify it as sample or provisional information rather than presenting it as an established market price.
+
+Where practical, retain the source and date used to establish market pricing.
+
+---
+
+# PHASE 4 — COMPLETE FUNCTIONALITY REPAIR
+
+Every interactive element must work according to its intended purpose.
+
+### 4.1 Buttons and actions
+
+Inspect every button individually.
+
+Verify that:
+
+- It responds to user interaction.
+- It performs the correct action.
+- It opens the correct page, popup, or modal when applicable.
+- It does not trigger an unrelated action.
+- It does not navigate to a broken route.
+- It does not produce JavaScript errors.
+- It provides appropriate feedback.
+- It remains functional on mobile and desktop.
+- It cannot trigger duplicate submissions unintentionally.
+- It has an appropriate loading state where necessary.
+
+No dead buttons, placeholder links, empty click handlers, or visually interactive elements without functionality.
+
+### 4.2 Pages and navigation
+
+Test every page that should open.
+
+Check:
+- Direct URL access.
+- Internal navigation.
+- Browser back and forward navigation.
+- Page refresh.
+- Nested routes.
+- Navigation menus.
+- Mobile navigation.
+- External links.
+- Error and not-found routes.
+
+Every route must render the correct content.
+
+### 4.3 Popups and overlays
+
+Test every popup, modal, dropdown, and overlay.
+
+Verify:
+- Correct opening behavior.
+- Correct closing button.
+- Clicking outside closes it when appropriate.
+- Escape key behavior when appropriate.
+- No unexpected stacking or overlapping.
+- No content hidden behind another element.
+- Correct behavior on small screens.
+- Proper focus management and keyboard accessibility.
+
+### 4.4 Forms and inputs
+
+Test every form and input.
+
+Verify:
+- Required field validation.
+- Invalid input handling.
+- Correct error messages.
+- Successful submission.
+- Loading state.
+- Duplicate submission prevention.
+- Keyboard interaction.
+- Mobile keyboard behavior.
+- Correct data formatting.
+- Appropriate success and failure feedback.
+
+Do not simulate successful submissions when the underlying service is unavailable.
+
+---
+
+# PHASE 5 — REAL BOOKING AND SALES CONFIRMATION WORKFLOW
+
+Implement a booking process that represents a real business workflow.
+
+A booking submission must NOT automatically mean that the reservation is confirmed.
+
+### 5.1 Customer booking journey
+
+The expected flow:
+
+1. The customer explores the available items or services.
+2. The customer opens an item details page.
+3. The customer selects the relevant options, dates, quantities, or other required booking details.
+4. The customer enters their contact information.
+5. The customer reviews the booking information.
+6. The customer submits a booking request.
+7. The system records the request as **Pending Confirmation**.
+8. The customer sees a clear confirmation-of-request screen.
+9. The sales team contacts the customer to verify availability and discuss the booking details.
+10. The booking is updated to **Confirmed** only after the required sales confirmation.
+
+### 5.2 Mandatory customer-facing message
+
+After submitting a booking request, prominently display:
+
+**Your booking request has been received. It is currently pending confirmation. Our sales team will contact you within 24 hours to confirm availability and discuss your booking details.**
+
+Make it clear that:
+
+- The request has been received.
+- The booking is not yet confirmed.
+- The customer should expect contact within 24 hours.
+- The final details will be confirmed by the sales team.
+
+Do not display language suggesting that a booking is guaranteed before sales confirmation.
+
+### 5.3 Sales contact options
+
+Use the actual business contact information already available in the project or provided through verified configuration.
+
+Where applicable, support:
+- Phone.
+- WhatsApp.
+- Email.
+
+Do not invent a sales number or business email.
+
+All sales contact information must be maintained in one configuration location.
+
+If the required contact information is missing, keep it configurable, identify the missing value, and do not publish fabricated contact information.
+
+### 5.4 Booking statuses
+
+Implement an appropriate booking status model:
+
+- Pending Confirmation.
+- Contacted.
+- Confirmed.
+- Rejected.
+- Cancelled.
+
+Ensure status transitions are controlled and represented consistently throughout the customer interface.
+
+### 5.5 Booking records
+
+Each booking should have:
+
+- A unique booking reference.
+- Customer information.
+- Selected item or service.
+- Booking options and dates.
+- Quantity, where applicable.
+- Price breakdown.
+- Submission timestamp.
+- Current booking status.
+- Relevant sales notes or confirmation details, where authorized.
+
+The customer must be able to identify and review their booking request.
+
+Never expose another customer's private booking information.
+
+---
+
+# PHASE 6 — REAL WEBSITE ARCHITECTURE: LOGIN, ACCOUNTS, AND BACKEND
+
+Upgrade the website from a static demonstration into a proper application architecture.
+
+First inspect the existing technology stack and integrations.
+
+Preserve the current stack whenever possible.
+
+### 6.1 Authentication
+
+Plan and implement real authentication, including:
+
+- User registration.
+- Login.
+- Logout.
+- Secure password handling through a trusted authentication provider.
+- Password recovery.
+- Session management.
+- Protected account pages.
+- Authentication state persistence.
+- Appropriate authorization checks.
+
+Do not create fake authentication using only frontend state or local storage and describe it as a real login system.
+
+### 6.2 Customer accounts
+
+Users should be able to:
+
+- View their account information.
+- Update permitted profile details.
+- View their booking history.
+- View pending booking requests.
+- View confirmed bookings.
+- View booking details and status updates.
+- Access their own booking records securely.
+
+### 6.3 Sales and administration
+
+Design an appropriate administrative workflow for authorized sales staff.
+
+The system should support:
+
+- Viewing incoming booking requests.
+- Searching and filtering bookings.
+- Viewing customer-submitted details.
+- Updating booking statuses.
+- Recording sales notes.
+- Recording confirmation details.
+- Managing relevant items, prices, and availability.
+- Access control for administrative functions.
+
+Regular customers must never have access to administrative functionality.
+
+### 6.4 Backend and persistent storage
+
+Booking information and user accounts must use reliable backend services and persistent storage.
+
+Inspect whether an existing backend can support the requirements.
+
+If a backend is missing, evaluate an appropriate solution that fits the project and its operational requirements.
+
+Consider:
+
+- Database structure.
+- Authentication provider.
+- Secure APIs.
+- Role-based authorization.
+- Server-side validation.
+- Data integrity.
+- Booking status management.
+- Notifications.
+- Error handling.
+- Logging.
+- Backup and recovery requirements.
+
+Never expose API secrets, database credentials, private keys, or privileged access tokens in frontend code.
+
+### 6.5 Important GitHub Pages limitation
+
+GitHub Pages is a static hosting platform. It cannot independently provide a secure server-side backend, real database, protected API secrets, or server-side authentication logic.
+
+Therefore:
+
+- Keep the frontend compatible with GitHub Pages.
+- Use an appropriate external backend or managed service for real authentication, booking persistence, and sales operations.
+- Do not pretend that a frontend-only implementation is a production-ready booking platform.
+- Do not silently replace existing infrastructure.
+- Document every external service and required configuration.
+- Implement all feasible integrations using the available project credentials and existing services.
+- If credentials or configuration are unavailable, complete all independent work and identify exactly what is needed to activate the blocked integration.
+
+---
+
+# PHASE 7 — RESPONSIVE DESIGN ACROSS ALL PLATFORMS
+
+The website must provide a consistent, functional experience across different devices and screen sizes.
+
+Do not optimize exclusively for a laptop or desktop browser.
+
+### 7.1 Required device categories
+
+Test at minimum:
+
+**Mobile**
+- Small Android smartphone.
+- Standard Android smartphone.
+- Large smartphone.
+- Narrow viewport.
+- Portrait orientation.
+- Landscape orientation.
+
+**Tablet**
+- Tablet portrait.
+- Tablet landscape.
+
+**Desktop**
+- Standard laptop resolution.
+- Smaller laptop resolution.
+- Large desktop monitor.
+
+**Additional compatibility**
+- Chrome.
+- Edge.
+- Firefox.
+- Safari where the environment permits testing.
+
+Use actual devices whenever available.
+
+Use browser device emulation and responsive testing tools for additional coverage.
+
+Clearly distinguish between real-device testing and simulated-device testing. Never claim that a physical device was tested when only an emulator was used.
+
+### 7.2 Responsive requirements
+
+Inspect and fix:
+
+- Horizontal overflow.
+- Incorrect container widths.
+- Broken grids.
+- Overlapping elements.
+- Inconsistent spacing.
+- Text clipping.
+- Images with incorrect proportions.
+- Unusable forms.
+- Buttons that are too small.
+- Menus that cannot be operated comfortably.
+- Modals that exceed the viewport.
+- Footer layout problems.
+- Sticky navigation problems.
+- Incorrect touch behavior.
+
+All controls must be usable with touch, mouse, and keyboard where appropriate.
+
+### 7.3 Responsive interactions
+
+Verify that functionality remains identical in purpose across devices.
+
+For example:
+- Desktop navigation must have a usable mobile equivalent.
+- Hover-dependent actions must have touch-compatible behavior.
+- Dropdowns must not become inaccessible on mobile.
+- Modals must fit mobile screens.
+- Inputs must remain usable with the virtual keyboard.
+- Booking actions must be easy to access on small screens.
+
+Do not simply scale down the desktop design. Adapt layouts to the available space while preserving the original design system.
+
+---
+
+# PHASE 8 — EXHAUSTIVE VISUAL AND FUNCTIONAL QA
+
+This phase is mandatory.
+
+Use browser automation and available testing tools to interact with the actual website.
+
+Do not rely only on reading source code or visually inspecting screenshots of static pages.
+
+### 8.1 Test every interaction
+
+Return to the complete functionality inventory created in Phase 1.
+
+For every interactive control:
+
+1. Open the relevant page.
+2. Capture a screenshot before interacting.
+3. Perform the interaction.
+4. Capture a screenshot immediately after the interaction.
+5. Examine the resulting screen.
+6. Verify that the expected action occurred.
+7. Check for errors, broken layouts, or unexpected behavior.
+8. Record the result.
+9. Fix any failure.
+10. Repeat the test until it passes.
+
+Apply this process to every button and every relevant interaction, including:
+
+- Navigation buttons.
+- Page links.
+- Cards.
+- Booking buttons.
+- Forms.
+- Modal triggers.
+- Modal close controls.
+- Dropdowns.
+- Tabs.
+- Filters.
+- Search.
+- Sliders.
+- Menus.
+- Login and registration.
+- Account actions.
+- Responsive navigation.
+- Other clickable or touch-interactive elements.
+
+Do not test only one example from a group of similar buttons. Test every individual item.
+
+### 8.2 Screenshots are required evidence
+
+Screenshots are not optional documentation.
+
+Capture evidence for:
+
+- Every relevant page in its initial state.
+- Every tested button before and after interaction.
+- Every popup and modal in its opened state.
+- Important form validation states.
+- Successful and unsuccessful form submissions.
+- Booking workflow stages.
+- Mobile navigation states.
+- Responsive layouts.
+- Important error and empty states.
+
+Organize screenshots in a structured QA evidence directory.
+
+Use descriptive filenames that identify:
+
+- Page.
+- Component or control.
+- Device or viewport.
+- Interaction state.
+- Test result.
+
+Example:
+
+`qa/mobile/booking/submit-booking/pending-confirmation.png`
+
+Do not claim a screenshot exists unless the file was actually created.
+
+### 8.3 Test all user journeys
+
+In addition to individual controls, execute complete user journeys:
+
+**Visitor journey**
+- Open homepage.
+- Navigate between pages.
+- Browse items.
+- Open item details.
+- Use search and filters.
+- Navigate back and forward.
+
+**Booking journey**
+- Select an item.
+- Enter booking details.
+- Submit the request.
+- Verify the pending status.
+- Review the booking reference and details.
+
+**Account journey**
+- Register.
+- Log in.
+- Access the account.
+- Review bookings.
+- Log out.
+
+**Sales journey**
+- Access the authorized sales interface.
+- Review a booking request.
+- Update its status.
+- Verify that the customer-facing status is updated.
+
+Test failure scenarios as well as successful scenarios.
+
+Never use real customer information during testing.
+
+Use isolated test accounts and test data.
+
+### 8.4 Test results
+
+Classify every test as:
+
+- PASS — expected behavior verified.
+- FAIL — behavior did not meet expectations.
+- BLOCKED — testing requires unavailable credentials, hardware, or external services.
+- NOT APPLICABLE — the functionality does not exist or is not relevant.
+
+Do not classify an untested feature as PASS.
+
+---
+
+# PHASE 9 — ACCESSIBILITY AND PERFORMANCE OPTIMIZATION
+
+Improve the entire website without compromising the existing design.
+
+### 9.1 Accessibility
+
+Inspect and improve:
+
+- Semantic HTML.
+- Keyboard navigation.
+- Visible focus indicators.
+- Screen reader labels.
+- Color contrast.
+- Form labels.
+- Accessible error messages.
+- Modal focus behavior.
+- Image alternative text.
+- Heading hierarchy.
+- Touch target sizes.
+- Reduced-motion support.
+
+Use WCAG 2.2 AA as the accessibility target.
+
+### 9.2 Performance
+
+Inspect actual runtime and build performance.
+
+Investigate:
+
+- Large JavaScript bundles.
+- Unnecessary dependencies.
+- Render-blocking resources.
+- Excessive network requests.
+- Unoptimized images.
+- Layout shifts.
+- Unnecessary re-rendering.
+- Memory usage.
+- Expensive animations.
+- Main-thread blocking.
+- Slow navigation.
+- Poor mobile performance.
+
+Implement appropriate optimizations.
+
+Use:
+- Correct image formats and responsive image sizes.
+- Lazy loading where appropriate.
+- Code splitting where beneficial.
+- Efficient component rendering.
+- Appropriate caching.
+- Optimized asset delivery.
+- Reduced unnecessary animation work.
+- Graceful behavior on lower-powered devices.
+
+Maintain smooth interactions on both low-end and high-end devices.
+
+Do not remove meaningful animations simply to improve performance. Optimize them while retaining the existing visual design.
+
+### 9.3 Measure performance
+
+Run appropriate performance audits before and after optimization.
+
+Record actual results using Lighthouse or equivalent tools.
+
+Review:
+- Performance.
+- Accessibility.
+- Best Practices.
+- SEO.
+- Core Web Vitals where measurable.
+
+Do not describe performance as perfect based on visual inspection alone.
+
+Report the measured results and any remaining limitations.
+
+---
+
+# PHASE 10 — ERROR HANDLING AND REAL-WORLD RELIABILITY
+
+Ensure the website handles real-world conditions properly.
+
+Implement and test appropriate states for:
+
+- Loading.
+- Empty results.
+- No internet connection.
+- Slow network.
+- API failure.
+- Permission denied.
+- Session expiration.
+- Invalid forms.
+- Duplicate submissions.
+- Booking submission failure.
+- Unavailable items.
+- Missing images.
+- Unknown routes.
+- Authentication failure.
+
+Do not leave users with blank screens, frozen buttons, or unexplained failures.
+
+Error messages should be useful and consistent with the existing design system.
+
+---
+
+# PHASE 11 — PRODUCTION BUILD AND GITHUB PAGES DEPLOYMENT
+
+Once the implementation and local testing are complete, prepare the website for GitHub Pages.
+
+### 11.1 Production readiness
+
+Verify:
+
+- Production build succeeds.
+- No unresolved compilation errors.
+- No broken asset paths.
+- Correct GitHub Pages base path.
+- Correct route handling.
+- Correct static asset loading.
+- No accidental local development URLs.
+- No exposed secrets.
+- No unwanted test data.
+- No debug-only behavior.
+- No broken external integrations.
+
+### 11.2 GitHub Pages configuration
+
+Inspect the current repository and deployment setup.
+
+Use the appropriate deployment method for the project.
+
+Configure the build and deployment workflow correctly.
+
+Ensure that:
+- The correct branch or GitHub Actions workflow is used.
+- The build output is published correctly.
+- Routes and assets work under the GitHub Pages URL.
+- Refreshing nested routes does not produce unexpected failures.
+- The deployed website loads without requiring a local development server.
+
+Do not overwrite unrelated repository files or deployment configurations unnecessarily.
+
+Do not expose deployment credentials.
+
+### 11.3 Deployment execution
+
+Deploy the completed website to GitHub Pages using the available authorized repository access.
+
+Verify the actual published URL.
+
+Do not claim deployment succeeded merely because the build passed or the GitHub Actions workflow started.
+
+Confirm that the live website is accessible and functioning.
+
+---
+
+# PHASE 12 — POST-DEPLOYMENT VERIFICATION
+
+Deployment is not the end of the task.
+
+Repeat the relevant QA process against the actual published website.
+
+Do not rely on local testing results as proof of production functionality.
+
+### 12.1 Live website verification
+
+Open the published URL and verify:
+
+- Homepage.
+- Every accessible page.
+- Navigation.
+- Images.
+- Page routing.
+- Buttons.
+- Links.
+- Popups.
+- Forms.
+- Search and filters.
+- Booking workflow.
+- Login and account flows, where configured.
+- Responsive layouts.
+- Console errors.
+- Network failures.
+- Asset loading.
+- Actual production behavior.
+
+### 12.2 Repeat interaction testing
+
+Revisit the complete functionality inventory.
+
+Test every button and interactive item again on the published website.
+
+Capture screenshots before and after interactions, just as in local testing.
+
+Repeat the process across the available mobile, tablet, and desktop test environments.
+
+Fix production-specific failures and redeploy when necessary.
+
+After every redeployment, repeat the affected tests.
+
+**Do not finish until the final deployed version has been tested, not merely the local version.**
+
+---
+
+# PHASE 13 — FINAL REPORT AND EVIDENCE
+
+At the end, provide a comprehensive but precise completion report.
+
+Use the following structure:
+
+## 1. Implementation Summary
+- What was inspected.
+- What was changed.
+- What functionality was added.
+- What existing functionality was repaired.
+
+## 2. Egypt Localization
+- Egyptian locations implemented.
+- Images replaced.
+- Sources and licensing information.
+- Pricing localization.
+- Content differentiation.
+
+## 3. Functionality Audit
+- Total number of interactive elements identified.
+- Number tested.
+- Number passed.
+- Number failed.
+- Number blocked.
+- Fixes applied.
+
+## 4. Responsive Testing
+Provide a table containing:
+- Device category.
+- Viewport or device.
+- Browser.
+- Pages tested.
+- Interaction tests.
+- Result.
+- Whether testing used real hardware or emulation.
+
+## 5. Booking and Backend
+Explain:
+- Authentication implementation.
+- Database and persistence.
+- Booking workflow.
+- Pending confirmation behavior.
+- Sales workflow.
+- Notification integrations.
+- Remaining external configuration, if any.
+
+Clearly distinguish implemented features from planned or blocked integrations.
+
+## 6. Performance
+Provide actual before-and-after measurements.
+
+Include:
+- Lighthouse results.
+- Loading performance.
+- Relevant Core Web Vitals.
+- Build size where available.
+- Issues fixed.
+- Remaining limitations.
+
+## 7. Deployment
+Provide:
+- GitHub repository.
+- Published GitHub Pages URL.
+- Deployment workflow result.
+- Production build result.
+- Final live-site verification result.
+
+## 8. QA Evidence
+Provide the location of the screenshot evidence directory and organize the screenshots by device, page, and tested interaction.
+
+## 9. Remaining Issues
+List only genuine unresolved issues.
+
+For each issue, explain:
+- What is missing.
+- Why it remains unresolved.
+- What exact configuration, credential, access, or hardware is required.
+- Whether it affects the public website.
+
+Never hide failed tests or claim that blocked functionality works.
+
+---
+
+# FINAL EXECUTION DIRECTIVE
+
+Execute all phases in order.
+
+Do not stop after the initial inspection or planning stage.
+
+Do not wait for approval between implementation phases.
+
+Do not repeatedly ask questions that can be answered by inspecting the repository, existing configuration, or reliable external sources.
+
+Do not invent missing information to keep the workflow moving.
+
+When a genuinely unavailable dependency prevents one part of the task, document the blocker, use a safe configurable implementation where appropriate, and continue all independent work.
+
+Prioritize real functionality over visual simulation.
+
+Prioritize verified photographs over generated imagery.
+
+Prioritize real Egyptian pricing over invented numbers.
+
+Prioritize actual screenshots and test evidence over unsupported claims.
+
+Preserve the existing design system throughout the work.
+
+**The final deliverable is a fully inspected, Egypt-localized, responsive, functionally tested, performance-optimized website deployed to GitHub Pages, with every verified interaction documented and all remaining limitations explicitly disclosed.**
